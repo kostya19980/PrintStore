@@ -1,0 +1,224 @@
+﻿@model PrintStore.ViewModel.UserProfileViewModel
+@{
+    ViewData["Title"] = "Profile";
+}
+    <style>
+        #Render {
+            background: #F0F0F2;
+        }
+    </style>
+<div class="profile_wrapper">
+    <div class="section_name">
+        Профиль
+    </div>
+<form style="width: 752px;" asp-controller="UserProfile" asp-action="Profile">
+    <div class="profile_edit_wrapper">
+        <div class="profile_edit_block">
+            <div class="profile_edit_block_name">Персональные данные</div>
+            <div class="input_block">
+                <input class="phone_input" asp-for="Login" autocomplete="off" />
+                <label class="placeholder_label">Номер телефона</label>
+                <span class="input_success">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 7L9 18L4 13" stroke="#7CD85D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_error">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 8V12" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 16H12.01" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_clear">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#ABACB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span asp-validation-for="Login" class="form_danger"></span>
+            </div>
+            <div class="input_block">
+                <input asp-for="Email" autocomplete="off" />
+                <label class="placeholder_label">Электронная почта</label>
+                <span class="input_success">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 7L9 18L4 13" stroke="#7CD85D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_error">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 8V12" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 16H12.01" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_clear">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#ABACB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span asp-validation-for="Email" class="form_danger"></span>
+            </div>
+            <div class="input_block">
+                <input asp-for="FirstName" autocomplete="off" />
+                <label class="placeholder_label">Имя</label>
+                <span class="input_success">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 7L9 18L4 13" stroke="#7CD85D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_error">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 8V12" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 16H12.01" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_clear">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#ABACB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span asp-validation-for="FirstName" class="form_danger"></span>
+            </div>
+            <div class="input_block">
+                <input asp-for="SecondName" autocomplete="off" />
+                <label class="placeholder_label">Фамилия</label>
+                <span class="input_success">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 7L9 18L4 13" stroke="#7CD85D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_error">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 8V12" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 16H12.01" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_clear">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#ABACB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span asp-validation-for="SecondName" class="form_danger"></span>
+            </div>
+        </div>
+        <div class="profile_edit_block">
+            <div class="profile_edit_block_name">Адрес</div>
+            <div class="input_block">
+                <input asp-for="City" autocomplete="off" />
+                <label class="placeholder_label">Город</label>
+                <span class="input_success">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 7L9 18L4 13" stroke="#7CD85D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_error">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 8V12" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 16H12.01" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_clear">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#ABACB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span asp-validation-for="City" class="form_danger"></span>
+            </div>
+            <div class="input_block">
+                <input asp-for="Street" autocomplete="off" />
+                <label class="placeholder_label">Улица</label>
+                <span class="input_success">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 7L9 18L4 13" stroke="#7CD85D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_error">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 8V12" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 16H12.01" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_clear">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#ABACB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span asp-validation-for="Street" class="form_danger"></span>
+            </div>
+            <div class="input_block">
+                <input asp-for="Building" autocomplete="off" />
+                <label class="placeholder_label">Дом</label>
+                <span class="input_success">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 7L9 18L4 13" stroke="#7CD85D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_error">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 8V12" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 16H12.01" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_clear">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#ABACB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span asp-validation-for="Building" class="form_danger"></span>
+            </div>
+            <div class="input_block">
+                <input asp-for="Flat" autocomplete="off" />
+                <label class="placeholder_label">Квартира</label>
+                <span class="input_success">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 7L9 18L4 13" stroke="#7CD85D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_error">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 8V12" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 16H12.01" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_clear">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#ABACB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span asp-validation-for="Flat" class="form_danger"></span>
+            </div>
+            <div class="input_block">
+                <input asp-for="PostalCode" autocomplete="off" />
+                <label class="placeholder_label">Почтовый индекс</label>
+                <span class="input_success">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 7L9 18L4 13" stroke="#7CD85D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_error">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 8V12" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 16H12.01" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_clear">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#ABACB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span asp-validation-for="PostalCode" class="form_danger"></span>
+            </div>
+        </div>
+    </div>
+    <input class="profile_submit" type="submit" value="Изменить"/>
+</form>
+</div>
+

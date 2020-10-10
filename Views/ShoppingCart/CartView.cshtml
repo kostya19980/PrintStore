@@ -1,0 +1,229 @@
+﻿@model PrintStore.ViewModel.ShoppingCartViewModel
+@{
+    ViewData["Title"] = "CartView";
+}
+<style>
+    #Render {
+        background: #F0F0F2;
+    }
+</style>
+<environment include="Development">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+</environment>
+<div class="Cart_wrapper">
+    <div class="section_name">
+        Корзина
+    </div>
+    <div class="Cart_wrapper_row">
+        <div class="Cart_wrapper">
+            @foreach (var item in Model.CartItems)
+            {
+                <form id="@item.RecordId" class="cart_item">
+                    <div class="cart_item_top">
+                        <div class="cart_item_image_wrapper">
+                            <img src="@item.Template.Product.PicturePath" />
+                        </div>
+                        <div class="cart_item_info">
+                            <div class="cart_item_info_block">
+                                <label>@item.Template.Product.Category.Name</label>
+                                <span>@item.Template.Product.Name</span>
+                                <a asp-controller="Editor" asp-action="Editor" asp-route-templateId="@item.TemplateId">Редактировать</a>
+                            </div>
+                            <div class="cart_item_info_block">
+                                <label>Тип</label>
+                                <span>@item.Template.Product.Type</span>
+                            </div>
+                            <div class="cart_item_info_block">
+                                <label>Размер</label>
+                                <span>@Html.Raw(item.Template.Product.Height + "x" + item.Template.Product.Width + " см")</span>
+                            </div>
+                        </div>
+                        <button value="@item.RecordId" class="delete_cart_button">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 6L6 18M6 6L18 18" stroke="#ABACB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="cart_item_bottom">
+                        <div class="cart_item_options_wrapper">
+                            @if (item.Template.Product.CategoryId != 9)
+                            {
+                                <div class="cart_item_option_block">
+                                    <div class="option_block_label">
+                                        Печать
+                                        <span class="cart_item_help">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M8.00016 14.6666C11.6821 14.6666 14.6668 11.6818 14.6668 7.99992C14.6668 4.31802 11.6821 1.33325 8.00016 1.33325C4.31826 1.33325 1.3335 4.31802 1.3335 7.99992C1.3335 11.6818 4.31826 14.6666 8.00016 14.6666Z" stroke="#494C57" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M6.06006 5.99989C6.21679 5.55434 6.52616 5.17863 6.93336 4.93931C7.34056 4.7 7.81932 4.61252 8.28484 4.69237C8.75036 4.77222 9.1726 5.01424 9.47678 5.37558C9.78095 5.73691 9.94743 6.19424 9.94673 6.66656C9.94673 7.99989 7.94673 8.66656 7.94673 8.66656" stroke="#494C57" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M8 11.3333H8.00667" stroke="#494C57" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="select_block" style="width: 106px;">
+                                        <div class="select_title" tabindex="-1">
+                                            <label>@item.Paper.PrintType</label>
+                                            <span>
+                                            </span>
+                                        </div>
+                                        <div class="select_options" cart-item-id="@item.RecordId">
+                                            <input id="PrintType_1_@item.RecordId" type="radio" value="Цифровая" name="PrintType" asp-for="@item.Paper.PrintType"/>
+                                            <label for="PrintType_1_@item.RecordId">Цифровая</label>
+                                            <input id="PrintType_2_@item.RecordId" type="radio" value="Офсетная" name="PrintType" asp-for="@item.Paper.PrintType"/>
+                                            <label for="PrintType_2_@item.RecordId">Офсетная</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cart_item_option_block">
+                                    <div class="option_block_label">
+                                        Бумага
+                                        <span class="cart_item_help">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M8.00016 14.6666C11.6821 14.6666 14.6668 11.6818 14.6668 7.99992C14.6668 4.31802 11.6821 1.33325 8.00016 1.33325C4.31826 1.33325 1.3335 4.31802 1.3335 7.99992C1.3335 11.6818 4.31826 14.6666 8.00016 14.6666Z" stroke="#494C57" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M6.06006 5.99989C6.21679 5.55434 6.52616 5.17863 6.93336 4.93931C7.34056 4.7 7.81932 4.61252 8.28484 4.69237C8.75036 4.77222 9.1726 5.01424 9.47678 5.37558C9.78095 5.73691 9.94743 6.19424 9.94673 6.66656C9.94673 7.99989 7.94673 8.66656 7.94673 8.66656" stroke="#494C57" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M8 11.3333H8.00667" stroke="#494C57" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="select_block" style="width: 122px;">
+                                        <div class="select_title" tabindex="-1">
+                                            <label>@item.Paper.PaperType</label>
+                                            <span>
+                                            </span>
+                                        </div>
+                                        <div class="select_options" cart-item-id="@item.RecordId">
+                                            <input id="PaperType_1_@item.RecordId" type="radio" value="Мелованная" name="PaperType" asp-for="@item.Paper.PaperType"/>
+                                            <label for="PaperType_1_@item.RecordId">Мелованная</label>
+                                            <input id="PaperType_2_@item.RecordId" type="radio" value="Обычная" name="PaperType" asp-for="@item.Paper.PaperType"/>
+                                            <label for="PaperType_2_@item.RecordId">Обычная</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cart_item_option_block">
+                                    <div class="option_block_label">
+                                        Плотность
+                                        <span class="cart_item_help">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M8.00016 14.6666C11.6821 14.6666 14.6668 11.6818 14.6668 7.99992C14.6668 4.31802 11.6821 1.33325 8.00016 1.33325C4.31826 1.33325 1.3335 4.31802 1.3335 7.99992C1.3335 11.6818 4.31826 14.6666 8.00016 14.6666Z" stroke="#494C57" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M6.06006 5.99989C6.21679 5.55434 6.52616 5.17863 6.93336 4.93931C7.34056 4.7 7.81932 4.61252 8.28484 4.69237C8.75036 4.77222 9.1726 5.01424 9.47678 5.37558C9.78095 5.73691 9.94743 6.19424 9.94673 6.66656C9.94673 7.99989 7.94673 8.66656 7.94673 8.66656" stroke="#494C57" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M8 11.3333H8.00667" stroke="#494C57" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="select_block" style="width: 53px;">
+                                        <div class="select_title" tabindex="-1">
+                                            <label>@item.Paper.PaperDensity</label>
+                                            <span>
+                                            </span>
+                                        </div>
+                                        <div class="select_options" cart-item-id="@item.RecordId">
+                                            <input id="PaperDensity_90_@item.RecordId" type="radio" value="90" name="PaperDensity" asp-for="@item.Paper.PaperDensity"/>
+                                            <label for="PaperDensity_90_@item.RecordId">90</label>
+                                            <input id="PaperDensity_130_@item.RecordId" type="radio" value="130" name="PaperDensity" asp-for="@item.Paper.PaperDensity"/>
+                                            <label for="PaperDensity_130_@item.RecordId">130</label>
+                                            <input id="PaperDensit_170_@item.RecordId" type="radio" value="170" name="PaperDensity" asp-for="@item.Paper.PaperDensity"/>
+                                            <label for="PaperDensity_170_@item.RecordId">170</label>
+                                            <input id="PaperDensity_250_@item.RecordId" type="radio" value="250" name="PaperDensity" asp-for="@item.Paper.PaperDensity"/>
+                                            <label for="PaperDensity_250_@item.RecordId">250</label>
+                                            <input id="PaperDensity_300_@item.RecordId" type="radio" value="300" name="PaperDensity" asp-for="@item.Paper.PaperDensity"/>
+                                            <label for="PaperDensity_300_@item.RecordId">300</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            <div class="cart_item_option_block">
+                                <div class="option_block_label">
+                                    Количество
+                                </div>
+                                <div class="select_block" style="width: 69px;">
+                                    <div class="select_title" tabindex="-1">
+                                        <label>@item.Quantity</label>
+                                        <span>
+                                        </span>
+                                    </div>
+                                    <div class="select_options" cart-item-id="@item.RecordId">
+                                        <input id="Quantity_10_@item.RecordId" type="radio" value="10" name="Quantity" asp-for="@item.Quantity"/>
+                                        <label for="Quantity_10_@item.RecordId">10</label>
+                                        <input id="Quantity_100_@item.RecordId" type="radio" value="100" name="Quantity" asp-for="@item.Quantity"/>
+                                        <label for="Quantity_100_@item.RecordId">100</label>
+                                        <input id="Quantity_500_@item.RecordId" type="radio" value="500" name="Quantity" asp-for="@item.Quantity"/>
+                                        <label for="Quantity_500_@item.RecordId">500</label>
+                                        <input id="Quantity_1000_@item.RecordId" type="radio" value="1000" name="Quantity" asp-for="@item.Quantity"/>
+                                        <label for="Quantity_1000_@item.RecordId">1000</label>
+                                        <input id="Quantity_5000_@item.RecordId" type="radio" value="5000" name="Quantity" asp-for="@item.Quantity"/>
+                                        <label for="Quantity_5000_@item.RecordId">5000</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart_item_price_block">
+                            <label>Цена</label>
+                            <span id="price_@item.RecordId">@item.Price руб</span>
+                        </div>
+                    </div>
+                </form>
+                <script>
+                    @*$("#Quantity_@item.Quantity" + "_@item.RecordId").prop("checked", true);*@
+                    @*if ('@item.Template.Product.CategoryId' != 9) {
+                        $("#PaperDensity_@item.Paper.PaperDensity" + "_@item.RecordId").prop("checked", true);
+                    if ("@Html.Raw(item.Paper.PaperType)"== "Мелованная") {
+                        $("#PaperType_1_@item.RecordId").prop("checked", true);
+                    }
+                    if ("@Html.Raw(item.Paper.PaperType)"== "Обычная") {
+                        $("#PaperType_2_@item.RecordId").prop("checked", true);
+                    }
+                    if ("@Html.Raw(item.Paper.PrintType)" == "Цифровая") {
+                        $("#PrintType_1_@item.RecordId").prop("checked", true);
+                    }
+                    if ("@Html.Raw(item.Paper.PrintType)" == "Офсетная") {
+                        $("#PrintType_2_@item.RecordId").prop("checked", true);
+                        }
+                    }*@
+                </script>
+            }
+        </div>
+        <div class="cart_confirm_wrapper">
+            <div class="cart_confirm_top_part">
+                <label>Ваша корзина</label>
+                <div class="cart_confirm_prices_wrappers">
+                    <span id="quantity_confirm_block">Товары (@Model.CartItems.Count())</span>
+                    <span id="TotalWithoutDiscount">@Model.TotalPrice ₽</span>
+                </div>
+                <div class="cart_confirm_prices_wrappers">
+                    <span>Скидка</span>
+                    <span>0 ₽</span>
+                </div>
+                <div class="cart_promo_wrapper">
+                    <div class="input_block">
+                        <input type="text" placeholder="Промокод" />
+                        <span class="input_success">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 7L9 18L4 13" stroke="#7CD85D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <span class="input_error">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12 8V12" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12 16H12.01" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <span class="input_clear">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 6L6 18M6 6L18 18" stroke="#ABACB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <span class="form_danger"></span>
+                    </div>
+                    <button>Применить</button>
+                </div>
+            </div>
+            <div class="cart_confirm_bottom_part">
+                <div class="cart_total_wrapper">
+                    <span>Итого</span>
+                    <span id="TotalCost">@Model.TotalPrice ₽</span>
+                </div>
+                <a asp-controller="Order" asp-action="OrderConfirm">Перейти к оформлению</a>
+            </div>
+        </div>
+    </div>
+</div>

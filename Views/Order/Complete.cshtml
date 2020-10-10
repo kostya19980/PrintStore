@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Compelete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <style>
+        #Render {
+            background: #F0F0F2;
+        }
+    </style>
+<div class="order_main_wrapper">
+    <div class="section_name">
+        Завершение
+    </div>
+    <div class="order_form_wrapper">
+        <label style="font-family:Roboto">Ваш номер заказа - №@ViewData["OrderId"]</label>
+        <span style="font-family:Roboto">
+            По завершении выполнения заказа (в течении недели) 
+            вам будет отправлено сообщение на указанный номер телефона и
+            на электронную почту, также вы може отслеживать состояние в 
+            личном кабинете.
+        </span>
+    </div>
+</div>

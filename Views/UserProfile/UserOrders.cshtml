@@ -1,0 +1,72 @@
+﻿@model IEnumerable<PrintStore.Models.Order>
+@{
+    ViewData["Title"] = "UserOrders";
+    List<Order> orders = Model.ToList();
+}
+<style>
+    #Render {
+        background: #F0F0F2;
+    }
+</style>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/OrderManagement.js"></script>
+<div class="Cart_wrapper">
+    <div class="section_name">
+        Мои заказы
+    </div>
+    <div class="Cart_wrapper_row">
+        <div class="Cart_wrapper">
+            @foreach (var order in Model)
+            {
+                <div class="order_item" id="@order.OrderId">
+                    <div class="order_item_column">
+                        <a class="order_number" value="@order.OrderId">Заказ №@order.OrderId</a>
+                        <div class="order_total_price">
+                            Стоимость
+                            <br />
+                            <span>@order.Total ₽</span>
+                        </div>
+                    </div>
+                    <div class="order_item_column" style="width:100%">
+                        <div class="order_description_wrapper">
+                            <div class="order_description_title">Дата оформления</div>
+                            <div class="order_description">@order.OrderDate</div>
+                        </div>
+                        <div class="order_description_wrapper">
+                            <div class="order_description_title">Способ получения</div>
+                            <div class="order_description">@order.Delivery</div>
+                        </div>
+                        <div class="order_description_wrapper">
+                            <div class="order_description_title">Адрес доставки</div>
+                            @if (order.Delivery != "Самовывоз")
+                            {
+                                <div class="order_description">@order.Address.City,ул.@order.Address.Street д.@order.Address.Building кв.@order.Address.Flat, @order.Address.PostalCode</div>
+                            }
+                        </div>
+                        <div class="order_description_wrapper">
+                            <div class="order_description_title">Статус</div>
+                            @if (order.Status == 1)
+                            {
+                                <div class="order_description" style="color:#fed600">В обработке</div>
+                            }
+                            @if (order.Status == 2)
+                            {
+                                <div class="order_description" style="color:blue">Выполняется</div>
+                            }
+                            @if (order.Status == 3)
+                            {
+                                <div class="order_description" style="color:forestgreen">Завершен</div>
+                            }
+                            @if (order.Status == 4)
+                            {
+                                <div class="order_description" style="color:red">Отменен</div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+

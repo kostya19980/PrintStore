@@ -1,0 +1,61 @@
+﻿@model PrintStore.Models.User
+@{
+    ViewData["Title"] = "_OrderOwnerInfo";
+}
+<div class="cart_confirm_wrapper" style="max-width:450px;">
+    <div class="cart_confirm_top_part" style="border-bottom: none">
+        <label>Информация о клиенте</label>
+        <div class="order_item_block">
+            <div class="order_item_category">Идентификатор #@Model.Id</div>
+            <div class="order_item_product">
+                <div class="cart_item_image_wrapper" style="margin-left: 0;max-width:125px">
+                    <img src="~/Icons/user.svg" />
+                </div>
+                <div class="order_item_product_description">
+                    <div class="order_description_wrapper">
+                        <div class="order_description_title">Имя</div>
+                        <div class="order_description">@Model.Profile.FirstName</div>
+                    </div>
+                    <div class="order_description_wrapper">
+                        <div class="order_description_title">Фамилия</div>
+                        <div class="order_description">@Model.Profile.SecondName</div>
+                    </div>
+                    <div class="order_description_wrapper">
+                        <div class="order_description_title">Номер телефона</div>
+                        <div class="order_description">@Model.Login</div>
+                    </div>
+                    <div class="order_description_wrapper">
+                        <div class="order_description_title">Электронная почта</div>
+                        <a class="order_description" style="color: #337ab7;cursor:pointer">@Model.Email</a>
+                    </div>
+                </div>
+            </div>
+            <a class="user_orders_count" asp-controller="Admin" asp-action="SearchOrders" asp-route-UserId="@Model.Id">
+            Все заказы (@ViewData["UserOrdersCount"])</a>
+            @*<div class="order_item_category" style="margin-top:12px;">Адрес пользователя</div>
+                <div class="order_item_product_description" style="margin-top:12px;">
+                    <div class="order_description_wrapper">
+                        <div class="order_description_title">Город</div>
+                        <div class="order_description">@Model.Profile.Address.City</div>
+                    </div>
+                    <div class="order_description_wrapper">
+                        <div class="order_description_title">Улица</div>
+                        <div class="order_description">@Model.Profile.Address.Street</div>
+                    </div>
+                    <div class="order_description_wrapper">
+                        <div class="order_description_title">Дом</div>
+                        <div class="order_description">@Model.Profile.Address.Building</div>
+                    </div>
+                    <div class="order_description_wrapper">
+                        <div class="order_description_title">Квартира</div>
+                        <a class="order_description">@Model.Profile.Address.Flat</a>
+                    </div>
+                    <div class="order_description_wrapper">
+                        <div class="order_description_title">Квартира</div>
+                        <a class="order_description">@Model.Profile.Address.PostalCode</a>
+                    </div>
+                </div>*@
+        </div>
+    </div>
+</div>
+

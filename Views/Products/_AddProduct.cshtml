@@ -1,0 +1,137 @@
+﻿@model PrintStore.ViewModel.CreateProduct
+@{
+    ViewData["Title"] = "_AddProduct";
+}
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<script src="~/js/site.js"></script>
+<form class="product_modal_form" asp-controller="Admin" asp-action="AddProduct" enctype="multipart/form-data">
+    <div class="product_form_row">
+        <div class="product_form_column">
+            <label class="product_image_container" for="uploadImage" style="cursor:pointer">
+                <img id="img_product_create" src="~/images/no-image.png" />
+            </label>
+            <input id="uploadImage" asp-for="ProductImage" type="file" class="form-control" style="width:262px;margin-bottom:auto"/>
+        </div>
+        <div class="product_form_column">
+            <div class="input_block">
+                <input asp-for="Name" />
+                <label class="placeholder_label">Название</label>
+                <span class="input_success">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 7L9 18L4 13" stroke="#7CD85D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_error">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 8V12" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 16H12.01" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_clear">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#ABACB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span asp-validation-for="Name" class="form_danger"></span>
+            </div>
+            <div class="input_block">
+                <input asp-for="Type" />
+                <label class="placeholder_label">Тип</label>
+                <span class="input_success">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 7L9 18L4 13" stroke="#7CD85D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_error">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 8V12" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 16H12.01" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_clear">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#ABACB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span asp-validation-for="Type" class="form_danger"></span>
+            </div>
+            <div class="input_block">
+                <select asp-items="Model.Categories" class="select_category" asp-for="CategoryId"></select>
+                <span asp-validation-for="CategoryId" class="form_danger"></span>
+            </div>
+            <div class="product_form_row">
+                <div class="input_block">
+                    <input asp-for="Width" />
+                    <label class="placeholder_label">Ширина</label>
+                    <span class="input_success">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 7L9 18L4 13" stroke="#7CD85D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <span class="input_error">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M12 8V12" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M12 16H12.01" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <span class="input_clear">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18M6 6L18 18" stroke="#ABACB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <span asp-validation-for="Width" class="form_danger"></span>
+                </div>
+                <div class="input_block">
+                    <input asp-for="Height" />
+                    <label class="placeholder_label">Высота</label>
+                    <span class="input_success">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 7L9 18L4 13" stroke="#7CD85D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <span class="input_error">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M12 8V12" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M12 16H12.01" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <span class="input_clear">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18M6 6L18 18" stroke="#ABACB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <span asp-validation-for="Height" class="form_danger"></span>
+                </div>
+            </div>
+            <div class="input_block">
+                <input id="product_price" asp-for="Price" value="" />
+                <label class="placeholder_label">Стоимость</label>
+                <span class="input_success">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 7L9 18L4 13" stroke="#7CD85D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_error">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 8V12" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 16H12.01" stroke="#FC4952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="input_clear">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#ABACB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span asp-validation-for="Price" class="form_danger"></span>
+            </div>
+        </div>
+    </div>
+    <input type="submit" value="Добавить продукт" class="modal_confirm_button"/>
+</form>

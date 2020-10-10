@@ -1,0 +1,297 @@
+﻿.profile_block {
+    position: static;
+    margin-left: auto;
+}
+.profile_block:hover>.profile_a{
+    color:transparent;
+}
+.profile_block:hover >.profile_tooltip{
+    display:block;
+}
+.profile_tooltip {
+    display:none;
+    padding: 0px;
+    position: absolute;
+    width: 184px;
+    height: 200px;
+    top: 88px;
+    margin-left: -57px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 8px rgba(73, 76, 87, 0.15);
+    background: #FFFFFF;
+    border-radius: 4px;
+    border-bottom-width: 8px;
+    border-bottom: solid transparent;
+}
+.profile_tooltip::after{
+    content: "";
+    border:8px solid transparent;
+    position: absolute;
+    top:-8px;
+    left: 50%;
+    background: #FFFFFF;
+    border-width: 8px;
+    margin-left: -8px;
+    transform: rotate(45deg);
+    box-shadow: 0px 0px 8px rgba(73, 76, 87, 0.15);
+}
+.profile_tooltip_content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    padding-top:16px;
+}
+.profile_tooltip_content > a {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 32px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #20222D;
+    padding-left:16px;
+    cursor:pointer;
+}
+.profile_wrapper {
+    width: 100%;
+    height: 100%;
+    max-width: 1128px;
+    display: flex;
+    flex-direction: column;
+}
+.profile_edit_wrapper {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+    width: 752px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    margin-top: 35px;
+}
+.profile_edit_block{
+position:static;
+display:flex;
+flex-direction:column;
+}
+.profile_edit_block > .input_block {
+    width: 300px;
+}
+.profile_edit_block_name {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #20222D;
+    margin-bottom: 0px;
+}
+.profile_submit {
+    position:static;
+    display:flex;
+    margin-left:auto;
+    height: 48px;
+    background: #FF6700;
+    border: none;
+    border-radius: 4px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    padding-left:24px;
+    padding-right:24px;
+    margin-top:40px;
+}
+.order_number {
+    position: static;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #0080ff;
+    cursor:pointer;
+}
+.order_item {
+    display: flex;
+    flex-direction: row;
+    max-width: 650px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    margin-top: 35px;
+    padding-left: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+.order_item_column{
+    position:static;
+    display:flex;
+    flex-direction:column;
+    width:33%;
+}
+.order_total_price {
+    position: static;
+    margin-top: auto;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    font-size: 14px;
+    line-height: 24px;
+    color: #20222D;
+}
+.order_total_price>span{
+    font-size: 20px;
+    font-weight:900;
+}
+.order_description_title {
+    display: flex;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #ABACB3;
+    width: 150px;
+}
+.order_description {
+    position:static;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    align-self:flex-start;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    color: #20222D;
+    max-width:300px;
+}
+.order_description>svg{
+    position:static;
+    width:20px;
+    height:22px;
+    margin-left:8px;
+}
+.order_description_wrapper {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    margin-top: 12px;
+}
+.order_description_wrapper:first-child{
+    margin-top: 0px;
+}
+.order_item_block{
+    position:static;
+    display:flex;
+    flex-direction:column;
+    margin-top:16px;
+    padding-bottom:21px;
+}
+.order_item_category {
+    position:static;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    color: #20222D;
+}
+.order_item_product {
+    width: 100%;
+    position: static;
+    display: flex;
+    flex-direction: row;
+    margin-top: 12px;
+}
+.order_item_product_description {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+}
+    .order_item_product_description > .order_description_wrapper > .order_description_title {
+        width:100px;
+    }
+.order_item_paperinfo {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #DEDFE3;
+}
+.order_item_paperblock {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    margin-left:8px;
+    padding-bottom:16px;
+    width:100%;
+}
+.order_item_paperblock>.order_description_title{
+    width:100px;
+    padding-bottom:8px;
+}
+.order_item_price{
+    position:static;
+    display:flex;
+    flex-direction:row;
+    margin-top:12px;
+    margin-left:auto;
+}
+.status_select {
+    position: static;
+    border: none;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    color: #20222D;
+    width: 125px;
+    background: url(/Icons/chevron-down.svg) 106px / 16px no-repeat;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none !important;
+}
+.order_phone_number {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    color: #337ab7;
+    cursor: pointer;
+}
+.user_orders_count {
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    font-family: Roboto;
+    color: #337ab7;
+    cursor: pointer;
+    max-width:125px;
+}

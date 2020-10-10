@@ -1,0 +1,69 @@
+﻿@model PrintStore.ViewModel.OrderSearchView
+@{
+    ViewData["Title"] = "OrderManagement";
+}
+<style>
+    #Render {
+        background: #F0F0F2;
+    }
+</style>
+<link rel="stylesheet" href="~/jquery-ui-1.12.1/jquery-ui.css" />
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-ui-1.12.1/jquery-ui.js"></script>
+<script src="~/js/OrderManagement.js"></script>
+<div class="Cart_wrapper">
+    <div class="section_name">
+        Управление заказами
+    </div>
+    <div class="product_options">
+        <label>Параметры</label>
+        <form id="order_filter_form" asp-controller="Admin" asp-action="SearchOrders">
+            <select id="Status" asp-for="@Model.filters.Status" class="product_options_select">
+                <option value="0" second-name="Статус" style="display:none;color:black" selected>Статус</option>
+                <option value="1" style="color:#fed600;">В обработке</option>
+                <option value="2" style="color:blue;">Выполняется</option>
+                <option value="3" style="color:forestgreen;">Завершен</option>
+                <option value="4" style="color:red;">Отменен</option>
+            </select>
+            <select asp-for="@Model.filters.Delivery" class="product_options_select">
+                <option value="0"  second-name="Способ получения" style="display:none;" selected>Способ получения</option>
+                <option value="Самовывоз">Самовывоз</option>
+                <option value="Почта">Почта</option>
+                <option value="Курьер">Курьер</option>
+            </select>
+            <input asp-for="@Model.filters.Date" type="text" id="datepicker" placeholder="Выберите дату" autocomplete="off" class="product_options_select">
+            <div class="order_filter_block">
+                <select id="filter_list" asp-for="@Model.filters.SelectFilter" class="product_options_select" style="border-right:1px solid black">
+                    <option value="0" second-name="Поиск по" style="display:none;" selected>Поиск по</option>
+                    <option value="Email">Элетронная почта</option>
+                    <option value="Phone">Номер телефона</option>
+                    <option value="OrderId">Номер заказа</option>
+                </select>
+                <input id="Email" asp-for="@Model.filters.Email" type="text" autocomplete="off" class="product_options_select" style="display:none;">
+                <input id="Phone" asp-for="@Model.filters.Phone" type="text" autocomplete="off" class="product_options_select" style="display:none;">
+                <input id="OrderId" asp-for="@Model.filters.OrderId" type="text" autocomplete="off" class="product_options_select" style="display:none;">
+                <script>
+                    var filterValue = $("#filter_list").val();
+                    $("#" + filterValue).css({ "display": "flex" });
+                    var elems = $(".product_options_select");
+                    for (var i = 0; i < elems.length; i++) {
+                        if ($(elems[i]).val() != 0) {
+                            $(elems[i]).children("option[value='0']").css({ "display": "flex" });
+                            $(elems[i]).children("option[value='0']").text("Все");
+                        }
+                    }
+                </script>
+            </div>
+            <input type="submit" value="Найти" class="order_filter_submit"/>
+        </form>
+    </div>
+    <div class="Cart_wrapper_row">
+        <div class="Cart_wrapper">
+            @{
+                await Html.RenderPartialAsync("~/Views/Admin/OrderManagement/_Orders.cshtml",Model.Orders);
+            }
+        </div>
+    </div>
+</div>
+
+

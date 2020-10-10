@@ -1,0 +1,382 @@
+﻿.product_container {
+    position: static;
+    width: 100%;
+    max-width:1128px;
+    display:flex;
+    flex-direction:column;
+}
+.category_name {
+    position: static;
+    height: 32px;
+    margin-top:37px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -0.01em;
+    color: #20222D;
+}
+.product_options {
+    position: static;
+    width: 100%;
+    height: 56px;
+    background: #20222D;
+    border-radius: 8px;
+    margin-top: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+}
+.product_options>label{
+    position: static;
+    left: 24px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #F0F0F2;
+    margin-left:24px;
+    margin-bottom:0;
+}
+.product_options>div{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    position: static;
+    max-width:832px;
+    width: 100%;
+    height: 32px;
+    margin-left:57px;
+}
+.product_options_select {
+    position: static;
+    width: 160px;
+    height: 100%;
+    border-radius: 4px;
+    align-self: center;
+    padding-left: 8px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #20222D;
+    background: url(/Icons/chevron-down.svg) 136px / 16px no-repeat;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none !important;
+    background-color: #FFFFFF;
+    border:none;
+}
+.edit_product > svg {
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+}
+.edit_product {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #20222D;
+    margin-right: 20px;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+.edit_product:hover {
+    color: #337ab7;
+}
+.edit_product:hover > svg {
+    fill: #337ab7;
+}
+.add_product {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #20222D;
+    cursor:pointer;
+}
+.add_product>svg{
+    margin-right:8px;
+}
+.add_product:hover {
+    color: #337ab7;
+}
+.add_product:hover > svg>path {
+    stroke: #337ab7;
+}
+.product_cards_container {
+    display: flex;
+    position: static;
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.product_cards_container:after {
+    content: '';
+    flex: auto;
+}
+.product_card {
+    position: static;
+    display:flex;
+    flex-direction:column;
+    width: 264px;
+    height: 427px;
+    border-radius: 8px;
+    margin-top: 40px;
+    flex-basis: 25%
+}
+.product_card>span{
+    position:static;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #20222D;
+    margin-top:13px;
+}
+.product_image_container {
+    position: relative;
+    width: 264px;
+    height: 264px;
+    background: #F0F0F2;
+    border: 1px solid #F0F0F2;
+    border-radius: 8px;
+}
+.product_image_container>img{
+    object-fit:contain;
+    width:100%;
+    height:100%;
+}
+.product_card_properties {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 24px;
+    margin-top:11px;
+}
+.product_card_properties>div{
+    position: static;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    height: 100%;
+    border: 2px solid #20222D;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    font-feature-settings: 'liga' off;
+    color: #20222D;
+    padding-left:16px;
+    padding-right:16px;
+    margin-left:8px;
+}
+.product_card_properties>div:first-child{
+    margin-left:0;
+}
+.product_card_button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: static;
+    margin-top:32px;
+    width: 118px;
+    min-height: 32px;
+    background: #FF6700;
+    border-radius: 4px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    cursor:pointer;
+}
+.product_price {
+    position: static;
+    margin-top: 11px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #FF6700;
+}
+.product_modal_background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    display: none;
+}
+.product_modal_background:target {
+    display: block;
+    pointer-events: auto;
+}
+
+.product_modal_window {
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin: 80px auto;
+    width: 652px;
+    background: #FFFFFF;
+    border-radius: 8px;
+}
+.product_modal_header {
+    position:static;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    width: 100%;
+    min-height: 44px;
+    background: #F0F0F2;
+}
+.modal_header_text {
+    position: static;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #494C57;
+    margin-left:16px;
+}
+.modal_close {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    margin-right: 16px;
+}
+.product_modal_form{
+    position:static;
+    width:582px;
+    margin-top:32px;
+    margin-bottom:32px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.product_form_row{
+    position:static;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    width:100%;
+}
+.product_form_row>.input_block{
+    margin:0;
+    margin-left:16px;
+}
+.product_form_row>.input_block:first-child{
+    margin:0;
+}
+.select_category {
+    position: static;
+    width: 100%;
+    height: 48px;
+    border-radius: 4px;
+    align-self: center;
+    padding-left: 8px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    color: #20222D;
+    background: url(/Icons/chevron-down.svg) 96% / 20px no-repeat;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none !important;
+    background-color: #FFFFFF;
+    border: 1px solid #DEDFE3;
+    outline:none;
+}
+.select_category:focus{
+    border: 1px solid #FF6700;
+}
+.product_form_column{
+    position:static;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    width:100%;
+}
+.modal_confirm_button {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+    padding-left:16px;
+    padding-right:16px;
+    height: 48px;
+    background: #7CD85D;
+    border:none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.04em;
+    font-feature-settings: 'liga' off;
+    color: #FFFFFF;
+    margin-left:auto;
+    margin-top:16px;
+}

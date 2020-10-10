@@ -1,0 +1,102 @@
+﻿@model PrintStore.ViewModel.ProductsView
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="product_container">
+    <label class="category_name">@Model.CategoryName</label>
+    @if (User.IsInRole("admin"))
+    {
+        <a class="add_product">
+            <svg width="24" height="24" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M44.6667 2H7.33333C4.38781 2 2 4.38781 2 7.33333V44.6667C2 47.6122 4.38781 50 7.33333 50H44.6667C47.6122 50 50 47.6122 50 44.6667V7.33333C50 4.38781 47.6122 2 44.6667 2Z" stroke="#20222D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M26 15.3333V36.6666" stroke="#20222D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M15.3333 26H36.6666" stroke="#20222D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Добавить продукт
+        </a>
+    }
+    <div class="product_options">
+        <label>Параметры</label>
+        <div>
+            <select class="product_options_select">
+                <option>Тип</option>
+                <option>2</option>
+            </select>
+            <select class="product_options_select">
+                <option>Размер</option>
+                <option>2</option>
+            </select>
+            <select class="product_options_select">
+                <option>Цвет</option>
+                <option>2</option>
+            </select>
+            <select class="product_options_select">
+                <option>Категория</option>
+                <option>2</option>
+            </select>
+            <select class="product_options_select">
+                <option>Стиль</option>
+                <option>2</option>
+            </select>
+        </div>
+    </div>
+    <div class="product_cards_container">
+        @foreach (var product in Model.Products)
+        {
+            <div class="product_card">
+                @if (User.IsInRole("admin"))
+                {
+                    <a class="edit_product" asp-controller="Editor" asp-action="Editor" asp-route-templateId="@product.TemplateId">
+                        Редактировать
+                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 477.873 477.873" style="enable-background:new 0 0 477.873 477.873;" xml:space="preserve">
+                        <path d="M392.533,238.937c-9.426,0-17.067,7.641-17.067,17.067V426.67c0,9.426-7.641,17.067-17.067,17.067H51.2
+			c-9.426,0-17.067-7.641-17.067-17.067V85.337c0-9.426,7.641-17.067,17.067-17.067H256c9.426,0,17.067-7.641,17.067-17.067
+			S265.426,34.137,256,34.137H51.2C22.923,34.137,0,57.06,0,85.337V426.67c0,28.277,22.923,51.2,51.2,51.2h307.2
+			c28.277,0,51.2-22.923,51.2-51.2V256.003C409.6,246.578,401.959,238.937,392.533,238.937z" />
+
+                        <path d="M458.742,19.142c-12.254-12.256-28.875-19.14-46.206-19.138c-17.341-0.05-33.979,6.846-46.199,19.149L141.534,243.937
+			c-1.865,1.879-3.272,4.163-4.113,6.673l-34.133,102.4c-2.979,8.943,1.856,18.607,10.799,21.585
+			c1.735,0.578,3.552,0.873,5.38,0.875c1.832-0.003,3.653-0.297,5.393-0.87l102.4-34.133c2.515-0.84,4.8-2.254,6.673-4.13
+			l224.802-224.802C484.25,86.023,484.253,44.657,458.742,19.142z M434.603,87.419L212.736,309.286l-66.287,22.135l22.067-66.202
+			L390.468,43.353c12.202-12.178,31.967-12.158,44.145,0.044c5.817,5.829,9.095,13.72,9.12,21.955
+			C443.754,73.631,440.467,81.575,434.603,87.419z" />
+
+                        </svg>
+                    </a>
+                }
+                <div class="product_image_container">
+                    <img src="@product.PicturePath" />
+                </div>
+                <span>@product.Name</span>
+                <div class="product_price">
+                    от @product.Price ₽
+                </div>
+                <div class="product_card_properties">
+                    <div>@product.Type</div>
+                    <div>@Html.Raw(product.Height + "x" + product.Width + " см")</div>
+                </div>
+                <a class="product_card_button" asp-controller="Editor" asp-action="CreateUserTemplate" asp-route-TemplateId="@product.TemplateId">Подробнее</a>
+            </div>
+        }
+    </div>
+</div>
+<div id="product_modal" class="product_modal_background">
+    <div class="product_modal_window">
+        <div class="product_modal_header">
+            <div class="modal_header_text">
+                Добавление продукта
+            </div>
+            <a href="#close_modal" class="modal_close">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 1L1 11M1 1L11 11" stroke="#B4B5BD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </a>
+        </div>
+        <div class="product_modal_content">
+
+        </div>
+    </div>
+</div>
+    
+

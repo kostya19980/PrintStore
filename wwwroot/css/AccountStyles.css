@@ -1,0 +1,275 @@
+﻿.account_modal_background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    width: 100%;
+    height: 100%;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    z-index: 2;
+}
+.account_modal_window {
+    position: relative;
+    width: 320px;
+    height: auto;
+    background: #FFFFFF;
+    border-radius: 8px;
+}
+.account_modal_header {
+    position: relative;
+    height: 48px;
+    background: #F0F0F2;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.modal_header_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    position: static;
+    width: 128px;
+    height: 100%;
+    background: none;
+    border:none;
+    float: left;
+    outline:none;
+    text-decoration: none;
+    color: #494C57;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+}
+.modal_header_button:hover {
+    text-decoration: none;
+}
+.auth_block {
+    position: relative;
+    height: auto;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+}
+.account_form_block {
+    position: static;
+    flex-direction: column;
+    display: flex;
+    margin-top: 40px;
+    width: 272px;
+    height: auto;
+}
+.account_form_checkbox {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    height: auto;
+    margin-top:18px;
+}
+.account_form_checkbox>input{
+    position: absolute;
+    height: 16px;
+    width:16px;
+    margin-top:0;
+    opacity:0;
+}
+.account_form_checkbox>input+label {
+  display: inline-flex;
+  text-align:left;
+  user-select: none;
+  margin-left:24px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  color: #20222D;
+  height:100%;
+  cursor:pointer;
+}
+.account_form_checkbox>input+label::before {
+    position:absolute;
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    background-repeat: no-repeat;
+    background-image: url("/Icons/checkbox.svg");
+    left:24px;
+}
+    .account_form_checkbox > input:checked + label::before {
+        background-repeat: no-repeat;
+        background-image: url("/Icons/checkbox-active.svg");
+    }
+/*стили при наведении курсора на checkbox
+.account_form_checkbox>input:not(:disabled):not(:checked) + label:hover::before {
+    border-color: #b3d7ff;
+}
+стили для активного состояния чекбокса (при нажатии на него)
+.account_form_checkbox>input:not(:disabled):active + label::before {
+    background-color: #b3d7ff;
+    border-color: #b3d7ff;
+}
+стили для чекбокса, находящегося в фокусе
+.account_form_checkbox>input:focus + label::before {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked 
+.account_form_checkbox>input:focus:not(:checked) + label::before {
+    border-color: #80bdff;
+}
+стили для чекбокса, находящегося в состоянии disabled
+.account_form_checkbox>input:disabled + label::before {
+    background-color: #e9ecef;
+}*/
+.account_submit {
+    position: static;
+    width: 100%;
+    height: 40px;
+    margin-top:40px;
+    background: #FF6700;
+    border: none;
+    border-radius: 4px;
+    justify-content: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+}
+.modal_header_close {
+    position: absolute;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    background:none;
+    border:none;
+    outline:none;
+    padding:0;
+    width: 24px;
+    height: 24px;
+    right: 8px;
+    top: 12px;
+}
+.modal_header_close > svg{
+    width:100%;
+    height:100%;
+}
+.forget_password {
+    position: static;
+    margin-top:16px;
+    margin-bottom:24px;
+    bottom: 32px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #20222D;
+}
+.placeholder_label {
+    position: absolute;
+    left: 12px;
+    top: 16px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    color: #ABACB3;
+    transition-duration: .2s;
+    pointer-events: none;
+}
+.placeholder_label_after {
+    position: absolute;
+    left: 12px;
+    top: 8px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.04em;
+    color: #ABACB3;
+    transition-duration: .2s;
+    pointer-events: none;
+}
+.form_danger {
+    position: relative;
+    margin-right: auto;
+    margin-top: 6px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.04em;
+    color: #FC4952;
+}
+.input_success {
+    position: absolute;
+    right: 8px;
+    top: 12px;
+    display:none;
+}
+.input_clear {
+    position: absolute;
+    right: 8px;
+    top: 12px;
+    cursor: pointer;
+    display:none;
+}
+.valid:not(:focus) ~ .input_success {
+    display:flex;
+}
+.input_error {
+    position: absolute;
+    right: 8px;
+    top: 12px;
+    display: none;
+}
+.input-validation-error ~ .input_error {
+    display: flex;
+}
+.input-validation-error:not(:focus) {
+    border: 1px solid #FC4952;
+}
+#error_summary {
+    position: static;
+    display: none;
+    margin-top: 24px;
+    margin-bottom:-16px;
+    width: 100%;
+    height: 32px;
+    border: 1px solid #FC4952;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FC4952;
+    justify-content: center;
+    flex-direction: column;
+}

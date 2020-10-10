@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PrintStore.Models.Order>
+@{
+    ViewData["Title"] = "_Orders";
+}
+@foreach (var order in Model)
+{
+    <div class="order_item" id="@order.OrderId">
+        <div class="order_item_column">
+            <a class="order_number" value="@order.OrderId">Заказ №@order.OrderId</a>
+            <div class="order_total_price">
+                Стоимость
+                <br />
+                <span>@order.Total ₽</span>
+            </div>
+        </div>
+        <div class="order_item_column" style="width:100%">
+            <div class="order_description_wrapper">
+                <div class="order_description_title">Номер телефона</div>
+                <a class="order_phone_number" value="@order.UserId">@order.User.Login</a>
+            </div>
+            <div class="order_description_wrapper">
+                <div class="order_description_title">Дата оформления</div>
+                <div class="order_description">@order.OrderDate</div>
+            </div>
+            <div class="order_description_wrapper">
+                <div class="order_description_title">Способ получения</div>
+                <div class="order_description">@order.Delivery</div>
+            </div>
+            <div class="order_description_wrapper">
+                <div class="order_description_title">Адрес доставки</div>
+                @if (order.Delivery != "Самовывоз")
+                {
+                    <div class="order_description">@order.Address.City,ул.@order.Address.Street д.@order.Address.Building кв.@order.Address.Flat, @order.Address.PostalCode</div>
+                }
+            </div>
+            <div class="order_description_wrapper">
+                <div class="order_description_title">Статус</div>
+                <select id="status_@order.OrderId" class="status_select" order-id="@order.OrderId" asp-for="@order.Status">
+                    <option value="1" style="color:#fed600;">В обработке</option>
+                    <option value="2" style="color:blue;">Выполняется</option>
+                    <option value="3" style="color:forestgreen;">Завершен</option>
+                    <option value="4" style="color:red;">Отменен</option>
+                </select>
+                <script>
+                    var elem = document.getElementById("status_" + '@order.OrderId');
+                    statusColor(elem, '@order.Status');
+                </script>
+            </div>
+        </div>
+    </div>
+}

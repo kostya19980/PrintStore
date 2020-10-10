@@ -1,0 +1,303 @@
+﻿@model PrintStore.ViewModel.EditorViewModel
+@{
+    ViewData["Title"] = "Editor";
+}
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/EditorStyles.css" />
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/jquery-ui-1.12.1/jquery-ui.js"></script>
+        <script src="~/js/Editor-side-tools.js"></script>
+        <script src="~/js/Editor-jquery-ui.js"></script>
+        <script src="~/js/Editor-image-block.js"></script>
+        <script src="~/js/Editor-text-block.js"></script>
+        <script src="~/lib/three.js-dev/build/three.min.js"></script>
+        <script src="~/lib/three.js-dev/examples/js/loaders/OBJLoader.js"></script>
+        <script src="~/lib/three.js-dev/examples/js/controls/OrbitControls.js"></script>
+        <script src="~/js/Editor-3d.js"></script>
+        <script src="~/lib/html2canvas/html2canvas.js"></script>
+    </environment>
+    <div class="editor_wrapper">
+        <div class="editor_block">
+            <div class="editor_toolbar">
+                <div class="main_toolbar_buttons">
+                    <button id="save_template" class="toolbar_button">
+                        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.5 3V8H19.5M14.5 3H7.5C6.96957 3 6.46086 3.21071 6.08579 3.58579C5.71071 3.96086 5.5 4.46957 5.5 5V19C5.5 19.5304 5.71071 20.0391 6.08579 20.4142C6.46086 20.7893 6.96957 21 7.5 21H17.5C18.0304 21 18.5391 20.7893 18.9142 20.4142C19.2893 20.0391 19.5 19.5304 19.5 19V8M14.5 3L19.5 8M9.5 15L11.5 17L15.5 13" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Сохранить
+                    </button>
+                    <button class="toolbar_button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 9L9 13V5L5 9ZM5 9H16C17.0609 9 18.0783 9.42143 18.8284 10.1716C19.5786 10.9217 20 11.9391 20 13C20 14.0609 19.5786 15.0783 18.8284 15.8284C18.0783 16.5786 17.0609 17 16 17H15" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M5 9L9 5V13L5 9Z" fill="white" />
+                        </svg>
+                        Отменить
+                    </button>
+                    <button class="toolbar_button">
+                        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19.5 9H8.5C7.43913 9 6.42172 9.42143 5.67157 10.1716C4.92143 10.9217 4.5 11.9391 4.5 13C4.5 14.0609 4.92143 15.0783 5.67157 15.8284C6.42172 16.5786 7.43913 17 8.5 17H9.5M15.5 13L19.5 9L15.5 5V13Z" stroke="#B4B5BD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M15.5 5L19.5 9L15.5 13V5Z" fill="#B4B5BD" />
+                        </svg>
+                        Вернуть
+                    </button>
+                    <button class="toolbar_button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="24" viewBox="0 0 35 24" fill="none" style="">
+                            <rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="none" stroke="none" class="" style="" />
+                            <path d="M12.831632651388645,3.8520408868789673 H2.831632651388645 C1.7270626513886453,3.8520408868789673 0.8316326513886454,4.7474708868789675 0.8316326513886454,5.852040886878967 V7.852040886878967 C0.8316326513886454,8.956610886878968 1.7270626513886453,9.852040886878967 2.831632651388645,9.852040886878967 H12.831632651388645 C13.936232651388647,9.852040886878967 14.831632651388645,8.956610886878968 14.831632651388645,7.852040886878967 V5.852040886878967 C14.831632651388645,4.7474708868789675 13.936232651388647,3.8520408868789673 12.831632651388645,3.8520408868789673 z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" id="svg_1" class="" />
+                            <path d="M14.831632651388645,6.852040886878967 H15.831632651388645 C16.362032651388645,6.852040886878967 16.870732651388646,7.062750886878967 17.245832651388646,7.4378308868789675 C17.620932651388646,7.8129008868789676 17.831632651388645,8.321610886878968 17.831632651388645,8.852040886878967 C17.831632651388645,10.178120886878967 17.304832651388644,11.449940886878966 16.367132651388644,12.387540886878968 C15.429532651388644,13.325240886878968 14.157732651388645,13.852040886878967 12.831632651388645,13.852040886878967 H7.831632651388645 V15.852040886878967 " stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" id="svg_2" class="" />
+                            <path d="M8.831632651388645,15.852040886878967 H6.831632651388645 C6.2793326513886445,15.852040886878967 5.831632651388645,16.299740886878965 5.831632651388645,16.852040886878967 V20.852040886878967 C5.831632651388645,21.404340886878966 6.2793326513886445,21.852040886878967 6.831632651388645,21.852040886878967 H8.831632651388645 C9.383932651388646,21.852040886878967 9.831632651388645,21.404340886878966 9.831632651388645,20.852040886878967 V16.852040886878967 C9.831632651388645,16.299740886878965 9.383932651388646,15.852040886878967 8.831632651388645,15.852040886878967 z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" id="svg_3" class="" />
+                            <rect fill="" stroke="white" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke-dashoffset="" fill-rule="nonzero" id="svg_4" x="21.714285768568516" y="0.9387755021452904" width="10" height="10" style="color: rgb(0, 0, 0);" class="" />
+                        </svg>
+                        Фон
+                    </button>
+                    <button class="toolbar_button" id="add_text_button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.8984 5.84766H13.6719V20.0625H10.1562V5.84766H5V3H18.8984V5.84766Z" fill="white" />
+                        </svg>
+                        Текст
+                    </button>
+                </div>
+                <div class="font_family_select">
+                    <select>
+                    </select>
+                </div>
+                <div class="text_tools">
+                    <div class="font_size_select">
+                        <select>
+                        </select>
+                    </div>
+                    <button class="text_tools_button">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.1223 17.1415L12.228 17.5H12.6018H16.3412H17.0286L16.8169 16.846L11.6367 0.84599L11.5247 0.5H11.161H7.16862H6.8047L6.69283 0.846301L1.52421 16.8463L1.31304 17.5H2H5.73931H6.11442L6.21935 17.1399L7.0159 14.4061H11.3151L12.1223 17.1415ZM9.16089 6.98986L10.1949 10.489H8.13369L9.16089 6.98986Z" fill="white" stroke="#DEDFE3" />
+                        </svg>
+                    </button>
+                    <div class="text_decoration_block">
+                        <button class="text_tools_button" id="bold_button">
+                            <svg width="13" height="16" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 16V0H5.49457C7.47972 0 9.02931 0.368169 10.1429 1.10442C11.2563 1.84058 11.8132 2.93777 11.8132 4.39562C11.8132 5.15763 11.6338 5.83496 11.2748 6.42867C10.9158 7.0222 10.3627 7.46905 9.61535 7.7693C10.5531 7.9817 11.2453 8.40843 11.6923 9.04951C12.139 9.69059 12.3627 10.4288 12.3627 11.2638C12.3627 12.8243 11.8388 14.0038 10.7914 14.8022C9.7436 15.6009 8.2419 16 6.28569 16H0ZM3.72535 6.67035H5.57149C6.41394 6.65571 7.04408 6.4927 7.46173 6.18125C7.87929 5.86997 8.08816 5.41395 8.08816 4.81319C8.08816 4.1318 7.87559 3.63565 7.45088 3.32419C7.02573 3.01292 6.3738 2.85715 5.49466 2.85715H3.72535V6.67035ZM3.72535 9.13198V13.1429H6.28569C7.07698 13.1429 7.67042 12.9872 8.06602 12.6757C8.46153 12.3644 8.65956 11.8865 8.65956 11.2419C8.65956 10.5458 8.48914 10.0202 8.14841 9.66483C7.80785 9.30963 7.25656 9.13198 6.49473 9.13198H3.72535Z" fill="#20222D" />
+                            </svg>
+                        </button>
+                        <button class="text_tools_button" id="Italic_button">
+                            <svg width="7" height="16" viewBox="0 0 7 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.65946 16H0L3.19788 0H6.85734L3.65946 16Z" fill="#20222D" />
+                            </svg>
+                        </button>
+                        <button class="text_tools_button" id="Underline_button">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.28786 11.4202C5.23381 12.201 6.48744 12.5913 8.03186 12.5913C9.55917 12.5913 10.7921 12.201 11.7354 11.4202C12.6785 10.6394 13.1478 9.53948 13.1478 8.12042V0H10.2261V8.12042C10.2261 8.88981 10.0521 9.4569 9.66748 9.82157C9.28285 10.1864 8.74337 10.3686 8.03102 10.3686C7.31297 10.3686 6.75715 10.1848 6.36389 9.81725C5.97071 9.44981 5.77391 8.88424 5.77391 8.12042V0H2.85217V8.12042C2.85217 9.53948 3.34184 10.6394 4.28786 11.4202Z" fill="#20222D" />
+                                <path d="M16 13.7043H0V16H16V13.7043Z" fill="#20222D" />
+                            </svg>
+                        </button>
+                        <button class="text_tools_button" style="margin-left:12px;" id="Align_left">
+                            <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1H17M1 7H11M1 13H15" stroke="#20222D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button class="text_tools_button" id="Align_center">
+                            <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1H17M5 7H13M3 13H15" stroke="#20222D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button class="text_tools_button" id="Align_right">
+                            <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1H17M7 7H17M3 13H17" stroke="#20222D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button id="delete_button" class="text_tools_button" style="margin-left:12px;">
+                            <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 5H17M7 9V15M11 9V15M2 5L3 17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19H13C13.5304 19 14.0391 18.7893 14.4142 18.4142C14.7893 18.0391 15 17.5304 15 17L16 5M6 5V2C6 1.73478 6.10536 1.48043 6.29289 1.29289C6.48043 1.10536 6.73478 1 7 1H11C11.2652 1 11.5196 1.10536 11.7071 1.29289C11.8946 1.48043 12 1.73478 12 2V5" stroke="#20222D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <a id="Create_PDF" class="text_tools_a" asp-controller="Editor" asp-action="CreatePDF" asp-route-TemplateId="@Model.templateId">
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 482.14 482.14" style="enable-background:new 0 0 482.14 482.14;" xml:space="preserve">
+                                <path d="M142.024,310.194c0-8.007-5.556-12.782-15.359-12.782c-4.003,0-6.714,0.395-8.132,0.773v25.69
+                                      c1.679,0.378,3.743,0.504,6.588,0.504C135.57,324.379,142.024,319.1,142.024,310.194z" />
+                                <path d="M202.709,297.681c-4.39,0-7.227,0.379-8.905,0.772v56.896c1.679,0.394,4.39,0.394,6.841,0.394
+                                      c17.809,0.126,29.424-9.677,29.424-30.449C230.195,307.231,219.611,297.681,202.709,297.681z" />
+                                <path d="M315.458,0H121.811c-28.29,0-51.315,23.041-51.315,51.315v189.754h-5.012c-11.418,0-20.678,9.251-20.678,20.679v125.404
+                                      c0,11.427,9.259,20.677,20.678,20.677h5.012v22.995c0,28.305,23.025,51.315,51.315,51.315h264.223
+                                      c28.272,0,51.3-23.011,51.3-51.315V121.449L315.458,0z M99.053,284.379c6.06-1.024,14.578-1.796,26.579-1.796
+                                      c12.128,0,20.772,2.315,26.58,6.965c5.548,4.382,9.292,11.615,9.292,20.127c0,8.51-2.837,15.745-7.999,20.646
+                                      c-6.714,6.32-16.643,9.157-28.258,9.157c-2.585,0-4.902-0.128-6.714-0.379v31.096H99.053V284.379z M386.034,450.713H121.811
+                                      c-10.954,0-19.874-8.92-19.874-19.889v-22.995h246.31c11.42,0,20.679-9.25,20.679-20.677V261.748
+                                      c0-11.428-9.259-20.679-20.679-20.679h-246.31V51.315c0-10.938,8.921-19.858,19.874-19.858l181.89-0.19v67.233
+                                      c0,19.638,15.934,35.587,35.587,35.587l65.862-0.189l0.741,296.925C405.891,441.793,396.987,450.713,386.034,450.713z
+                                      M174.065,369.801v-85.422c7.225-1.15,16.642-1.796,26.58-1.796c16.516,0,27.226,2.963,35.618,9.282
+                                      c9.031,6.714,14.704,17.416,14.704,32.781c0,16.643-6.06,28.133-14.453,35.224c-9.157,7.612-23.096,11.222-40.125,11.222
+                                      C186.191,371.092,178.966,370.446,174.065,369.801z M314.892,319.226v15.996h-31.23v34.973h-19.74v-86.966h53.16v16.122h-33.42
+                                      v19.875H314.892z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="full_screen">
+                    <button class="full_screen_button">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 1H17M17 1V5M17 1L11 7M5 17H1M1 17V13M1 17L7 11M13 17H17M17 17V13M17 17L11 11M5 1H1M1 1V5M1 1L7 7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="editor_work_space">
+                <div class="hidden_layer">
+                        <div class="template" id="@Model.templateId" style="@Html.Raw("width:" + Model.Template.Width.ToString().Replace(',','.') + "px; height:" +Model.Template.Height.ToString().Replace(',','.')+"px; background:white")">
+                            @{
+                                foreach (var image in Model.Template.Images)
+                                {
+                                    <script>
+                        CreateImageBlock('@image.Name', '@image.Width'.replace(',', '.'), '@image.Height'.replace(',', '.'), '@image.Left'.replace(',', '.'), '@image.Top'.replace(',', '.'), '@Url.Content(@image.Src)');
+                                    </script>
+                                }
+                                int i = 0;
+                                foreach (var textBlock in Model.Template.TextBlocks)
+                                {
+                                    <div class="text_block" id="text_block_@i"
+                                         style="@Html.Raw("left:" + textBlock.Left.ToString().Replace(',','.') + "px; top:" +textBlock.Top.ToString().Replace(',','.')+"px;")">
+                                        <script>
+                                    $(document).ready(function () {
+                                        BlockUi($("#text_block_" + '@i'));
+                                        $("#text_block_" + '@i').resizable({ disabled: true, handles: 'n, e, s, w, se, sw, nw, ne' });
+                                    })
+                                        </script>
+                                        <div class="text_area" id="text_area_@i" contenteditable="true">
+                                            @foreach (var line in textBlock.Lines)
+                                            {
+                                                <div>
+                                                    @foreach (var text in line.Text)
+                                                    {
+                                                        <span style="@Html.Raw("width:"+text.Width+"px;"+
+                                                "font-family:" + text.FontFamily+";font-size:"+text.FontSize+"px;"+
+                                                "text-decoration:"+text.TextDecorationLine+";"+
+                                                "font-weight:"+text.FontWeight+";font-style:"+text.FontStyle+";"+
+                                                "TextAlign:"+text.TextAlign)">@text.Data</span>
+                                            }
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <script>
+                                        $(document).ready(function () {
+                                            $("#text_area_" + '@i').one("click", function () {
+                                                selectElementContents(this);
+                                            })
+                                                .focus(function () {
+                                                    $(this).css({ "cursor": "text" });
+                                                    $(this).parent().css({ "border": "1px solid #2299F9" });
+                                                    $(this).parent().draggable("disable");
+                                                    $(this).parent().children(".ui-resizable-handle").css({ "opacity": "1", "cursor": "default" });
+                                                    selectedNode = $(this);
+                                                    deleteId = $(this).parent().attr("id");
+                                                })
+                                                .blur(function () {
+                                                    $(this).css({ "cursor": "pointer" });
+                                                    $(this).parent().css({ "border": "1px solid black" });
+                                                    $(this).parent().draggable("enable");
+                                                    $(this).parent().children(".ui-resizable-handle").css({ "opacity": "0" });
+                                                    $(this).one("click", function () {
+                                                        selectElementContents(this);
+                                                    });
+                                                    deleteId = "";
+                                                });
+                                            document.execCommand('styleWithCSS', false, true);
+                                        })
+                                    </script>
+                                    i++;
+                                    <script>textBlockCount='@i'</script>
+                                }
+                            }
+                        </div>
+                </div>
+            </div>
+            @if (Model.CategoryId == 9)
+            {
+        <div class="ModelViewer">
+            <div >
+                <button id="hide_scene">Свернуть</button>
+            </div>
+                <button class="reload_scene">Обновить</button>
+        </div>
+        <script>
+            type = "3d";
+            var TextureWidth = parseInt('@Model.Template.Texture.Width');
+            var TextureHeight = parseInt('@Model.Template.Texture.Height');
+            var TextureName = '@Model.Template.Texture.TextureName';
+            var ModelName = '@Model.Template.Texture.ModelName';
+            var ModelSrc = '@Model.Template.Texture.ModelSrc';
+            var TextureSrc = '@Model.Template.Texture.TextureSrc';
+            var TextureAreaTop = parseInt('@Model.Template.Texture.TextureAreas[0].Top');
+            var TextureAreaLeft = parseInt('@Model.Template.Texture.TextureAreas[0].Left');
+            var TextureAreaName = '@Model.Template.Texture.TextureAreas[0].Name';
+            var TextureAreaWidth = parseInt('@Model.Template.Texture.TextureAreas[0].Width');
+            var TextureAreaHeight = parseInt('@Model.Template.Texture.TextureAreas[0].Height');
+            var TexturePath = TextureSrc + TextureName;
+            var ModelPath = ModelSrc + ModelName;
+            var product = new Product3D($(".ModelViewer")[0]);
+            product.addProduct(ModelPath, TexturePath);
+        </script>
+            }
+            <div class="zoom_block">
+                <button id="zoom_out" class="zoom_button">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.55556 7.22222H9.88889M17 17L11.6667 11.6667M13.4444 7.22222C13.4444 10.6587 10.6587 13.4444 7.22222 13.4444C3.78578 13.4444 1 10.6587 1 7.22222C1 3.78578 3.78578 1 7.22222 1C10.6587 1 13.4444 3.78578 13.4444 7.22222Z" stroke="#20222D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <button id="zoom_in" class="zoom_button">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.55556 7.22222H9.88889M7.22222 4.55556V9.88889M17 17L11.6667 11.6667M13.4444 7.22222C13.4444 10.6587 10.6587 13.4444 7.22222 13.4444C3.78578 13.4444 1 10.6587 1 7.22222C1 3.78578 3.78578 1 7.22222 1C10.6587 1 13.4444 3.78578 13.4444 7.22222Z" stroke="#20222D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <button id="zoom_info" class="zoom_button">
+                    Масштаб 100%
+                </button>
+            </div>
+            <div class="image_items">
+                <div class="add_image_button">
+                    <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.0001 23H31.0001M23.0001 15V31M7.00008 1.66663H39.0001C41.9456 1.66663 44.3334 4.05444 44.3334 6.99996V39C44.3334 41.9455 41.9456 44.3333 39.0001 44.3333H7.00008C4.05456 44.3333 1.66675 41.9455 1.66675 39V6.99996C1.66675 4.05444 4.05456 1.66663 7.00008 1.66663Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <label class="upload_label" for="uploadImage"></label>
+                    <input type="file" id="uploadImage" style="visibility:hidden;" />
+                </div>
+                <button id="arrow_back" class="arrow_image_list" style="left: 96px;">
+                    <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 1L1 7L7 13" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <div class="image_list">
+
+                </div>
+                <button id="arrow_forward" class="arrow_image_list" style="right: 16px;">
+                    <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L7 7L1 13" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+            <div id="delete_modal" class="modal_window">
+                <div class="delete_window">
+                    <div class="modal_header">
+                        <div class="modal_header_text">
+                            Подтверждение действия
+                        </div>
+                        <a href="#close_modal" class="modal_close">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11 1L1 11M1 1L11 11" stroke="#B4B5BD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="modal_info">
+                        Вы действительно хотите удалить фото?
+                        <br />
+                        Вы не сможете отменить это действие
+                    </div>
+                    <a href="#close_modal" class="modal_confirm_button">
+                        Удалить
+                    </a>
+                    <a href="#close_modal" class="modal_cancel_button">
+                        Отменить
+                    </a>
+                </div>
+            </div>
+        </div>
+        <a class="finish_button" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-TemplateId="@Model.templateId">Завершить и добавить в корзину</a>
+    </div>

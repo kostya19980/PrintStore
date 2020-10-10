@@ -1,0 +1,197 @@
+﻿.header {
+    position: absolute;
+    height: 152px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+}
+.header_info {
+    position: absolute;
+    height: 32px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    background: #F0F0F2;
+}
+.header_left {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    position: absolute;
+    height: 16px;
+    left: 156px;
+    top: calc(50% - 16px/2);
+    margin:0px -8px;
+}
+.header_right {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    position: absolute;
+    height: 20px;
+    right: 156px;
+    top: calc(50% - 20px/2);
+}
+.header_a {
+    position: static;
+    font-family: Roboto;
+    font-size: 14px;
+    height: 16px;
+    top: calc(50% - 16px/2);
+    font-weight: normal;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #494C57;
+    align-self: center;
+    margin: 16px 8px;
+}
+.logo {
+    position: absolute;
+    width: 168px;
+    height: 40px;
+    left: 156px;
+    top: calc(50% - 40px/2);
+}
+.city_select {
+    position: absolute;
+    left: 348px;
+    border: none;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    top: calc(50% - 21px/2);
+    background: url(/Icons/chevron-down.svg) 96% / 15% no-repeat;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none !important;
+}
+.find_block {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    position: absolute;
+    width: 320px;
+    height: 40px;
+    right: 276px;
+    top: calc(50% - 40px/2);
+    background: #FFFFFF;
+    border: 1px solid #DEDFE3;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+    .find_block > input {
+        width: 276px;
+        height: 38px;
+        border: none;
+        padding-left: 16px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight:normal;
+        font-size: 16px;
+        color: #B4B5BD;
+    }
+        .find_block > input::placeholder {
+            color: #B4B5BD;
+        }
+            .find_block > button {
+            width: 42px;
+            height: 38px;
+            background: none;
+            border: none;
+        }
+.profile {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 212px;
+    top: calc(50% - 40px/2);
+    cursor:pointer;
+}
+.shopping_cart {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 156px;
+    top: calc(50% - 40px/2);
+    cursor:pointer;
+}
+.main_nav {
+    position: absolute;
+    height: 72px;
+    left: 0px;
+    right: 0px;
+    top: 32px;
+}
+.Icon {
+    width: 20px;
+    height: 20px;
+    margin:0 0 0;
+}
+.Icon:hover>path{
+   stroke:blue;
+}
+.catalog {
+    position: absolute;
+    height: 48px;
+    left: 0px;
+    right: 0px;
+    top: 104px;
+    background: #20222D;
+}
+.catalog_content {
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    position: absolute;
+    height: 16px;
+    left: 179px;
+    top: 16px;
+    margin-left: -24px;
+}
+.catalog_a {
+    display: flex;
+    flex-direction: row;
+    flex: none;
+    align-self: flex-start;
+    padding: 0px;
+    height: 32px;
+    top: 0px;
+    margin-left: 24px;
+    padding-left:8px;
+    padding-right:8px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    text-decoration:none;
+}
+    .catalog_a:hover {
+        color: #FFFFFF;
+        border-bottom: solid 4px #FFD23F;
+        text-decoration: none;
+        cursor:pointer;
+    }
+.page_nav {
+    padding: 0px;
+    position: absolute;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    height: 48px;
+    width: 100%;
+    left: 0px;
+    top: 152px;
+    background: #F0F0F2;
+    padding-left: 156px;
+    padding-top:16px;
+}
